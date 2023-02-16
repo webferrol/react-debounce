@@ -1,4 +1,4 @@
-export default function UserComponent ({ avatarUrl, githubUrl, name }) {
+export default function UserComponent ({ avatarUrl, githubUrl, name, userCreatedAt }) {
   return (
     <article className='card' style={{ width: '18rem' }}>
       <header className='card-header'>
@@ -18,7 +18,7 @@ export default function UserComponent ({ avatarUrl, githubUrl, name }) {
           <img className='image card-avatar' src={avatarUrl} alt='Mi nombre es' />
           <div className='card-author-info'>
             <a className='card-link' href={githubUrl}>{name}</a>
-            <time className='card-date' dateTime='2020-06-28'>28 Jun 2020</time>
+            <time className='card-date' dateTime='2020-06-28'>{userCreatedAt}</time>
           </div>
         </div>
         <a className='card-share' href='#'><img src='/src/assets/icon-share.svg' alt='Share' /></a>
