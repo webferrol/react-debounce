@@ -1,0 +1,85 @@
+.body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  height: 100vh;
+  background-color: rgb(54, 52, 52);
+  font-size: 13px;
+}
+
+.card {
+  /* width: var(--mobile-width); */
+  max-width: var(--mobile-width);
+  background-color: var(--card-bg-color);
+  color: var(--color-2)
+}
+
+.card-author {
+  display: flex;
+  align-items: center;
+  gap: .5em;
+}
+
+.card-author-info {
+  display: flex;
+  flex-direction: column;
+  gap: .2em;
+}
+
+
+.card-title, 
+.card-link {
+  color: var(--color-1)
+}
+
+.card-title {  
+   
+  font-size: 1.2em;
+}
+
+
+
+.card-date {
+  color: var(--color-3)
+}
+.card-title,
+.card-text,
+.card-footer{
+  padding: 0 .6em;
+}
+
+
+/* Foto cabecera tarjeta */
+.card {
+  border-radius: 1em;
+}
+
+.card-img-top {
+  border-top-right-radius: 1em;
+  border-top-left-radius: 1em;
+}
+
+
+
+.image {
+  object-fit: cover;
+}
+
+.card-share > img {  
+  width: initial;
+}
+
+.card-avatar {
+  width: 3em;
+  border-radius: 50%;
+}
+
+
+.card-footer {
+  padding-bottom: 1em;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+  

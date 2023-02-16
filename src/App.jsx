@@ -1,39 +1,21 @@
-import { useEffect, useState } from 'react'
+import { useState, useCallback } from 'react'
+import debounce from 'just-debounce-it'
 import UserComponent from './components/User'
-import { User } from './models/User'
-// import userResponse from './mocks/github-user.json'
-// import userNotFount from './mocks/github-user-not-found.json'
+import { useUser } from './hooks/useUser'
 import './App.css'
 
-const URL_BASE = 'https://api.github.com/users/'
-
 function App () {
-  const [user, setUser] = useState('javier')
   const [value, setValue] = useState('')
+  const { user, getUser } = useUser()
 
-  useEffect(() => {
-    getUser(user)
-  }, [])
-
-  async function getUser (userValue) {
-    const response = await fetch(`${URL_BASE}${userValue}`)
-    const userResponse = await response.json()
-    if (response?.message) {
-      setUser(null)
-      return
-    }
-    setUser(new User(
-      {
-        name: userResponse.name,
-        githubUrl: userResponse.html_url,
-        avatarUrl: userResponse.avatar_url
-      }
-    ))
-  }
+  const fn = debounce((valueNow) => {
+    getUser(value)
+  }, 2000)
 
   function handleSetUser ({ target }) {
     if (target?.value.match(/^\s$/g)) return
     setValue(target.value)
+    fn()
   }
 
   async function handleSubmit (event) {
@@ -45,7 +27,7 @@ function App () {
       {
         user && <UserComponent {...user} />
       }
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{ marginTop: '1em' }}>
         <input
           onChange={handleSetUser}
           value={value}

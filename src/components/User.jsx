@@ -1,14 +1,28 @@
 export default function UserComponent ({ avatarUrl, githubUrl, name }) {
   return (
-    <div className='card' style={{ width: '18rem' }}>
-      <img src={avatarUrl} className='card-img-top' alt={githubUrl} />
-      <div className='card-body'>
-        <h5 className='card-title'>{name}</h5>
-        <p className='card-text'>
-          Some quick example text to build on the card title and make up the bulk of the card's content.
-        </p>
-        <a href={githubUrl} target='_blank' className='btn btn-primary' rel='noreferrer'>Go somewhere</a>
-      </div>
-    </div>
+    <article className='card' style={{ width: '18rem' }}>
+      <header className='card-header'>
+        <img className='card-img-top image' src={avatarUrl} alt='Wonderfull!!!!' />
+        <h2 className='card-title'>
+          Shift the overall look and feel by adding these wonderful
+          touches to furniture in your home
+        </h2>
+      </header>
+      <p className='card-text'>
+        Ever been in a room and felt like something was missing? Perhaps
+        it felt slightly bare and uninviting. I’ve got some simple tips
+        to help you make any room feel complete.
+      </p>
+      <footer className='card-footer'>
+        <div className='card-author'>
+          <img className='image card-avatar' src={avatarUrl} alt='Mi nombre es' />
+          <div className='card-author-info'>
+            <a className='card-link' href={githubUrl}>{name}</a>
+            <time className='card-date' dateTime='2020-06-28'>28 Jun 2020</time>
+          </div>
+        </div>
+        <a className='card-share' href='#'><img src='/src/assets/icon-share.svg' alt='Share' /></a>
+      </footer>
+    </article>
   )
 }
