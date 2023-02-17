@@ -1,8 +1,11 @@
-export default function UserComponent ({ avatarUrl, githubUrl, name, userCreatedAt }) {
+
+function UserComponent ({ avatarUrl, githubUrl, name, userCreatedAt }) {
   return (
     <article className='card' style={{ width: '18rem' }}>
       <header className='card-header'>
-        <img className='card-img-top image' src={avatarUrl} alt='Wonderfull!!!!' />
+        {
+          avatarUrl && <img className='card-img-top image' src={avatarUrl} alt='Wonderfull!!!!' />
+        }
         <h2 className='card-title'>
           Shift the overall look and feel by adding these wonderful
           touches to furniture in your home
@@ -24,5 +27,17 @@ export default function UserComponent ({ avatarUrl, githubUrl, name, userCreated
         <a className='card-share' href='#'><img src='/src/assets/icon-share.svg' alt='Share' /></a>
       </footer>
     </article>
+  )
+}
+
+function ErrorComponent ({ error }) {
+  return (
+    <strong style={{ color: 'white' }}>{error}</strong>
+  )
+}
+
+export function UserRender ({ data, error }) {
+  return (
+    !data || error ? <ErrorComponent error={error} /> : <UserComponent {...data} />
   )
 }
